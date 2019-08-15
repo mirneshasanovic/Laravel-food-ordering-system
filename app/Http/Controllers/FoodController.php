@@ -11,6 +11,11 @@ class FoodController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function todays_offer()
+    {
+        $food=Food::all();
+        return view('todays_offer')->with('food', $food);
+    }
     public function index()
     {
         return view('food_procurement');
@@ -34,14 +39,9 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        $food=new Food;
-        $food->food=$request->input('food');
-        $food->quantity=$request->input('quantity');
-        $f = $request->input('food');
-        if($food->food == $f){
-            $food->quantity=$food->quantity+$request->input('quantity');
-        }
-        $food->save();
+        $food=new Food;  
+            $old_value = Food::where('food', $request->input('food'))->first()->quantity;
+            Food::updateOrCreate(['food' => $request->input('food')] , ['quantity' =>$old_value+$request->input('quantity')] );
         return redirect('add_food');
     }
 

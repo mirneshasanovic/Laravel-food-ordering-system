@@ -11,10 +11,9 @@
         <div class="form-group">
                 {!! Form::label('quantity', 'Total amount of purchased food in kilos:', array('class' => 'boldfont')) !!}
                 {!! Form::text('quantity',null,['class'=>'form-control', 'placeholder'=>'Total amount of purchased food in kilos', 'required' => 'required']) !!}
-            </div>
+        </div>
 
                 {!! Form::submit('Submit', ['class'=>'form-control', 'class' => 'btn btn-primary']) !!}
         {!! Form::close() !!}
-        </div>
     </div>
 @endsection

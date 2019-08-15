@@ -34,6 +34,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('add_food') }}">Add food into database</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="todays_offer">Todays offer</a>
+                        </li>
 
                       </ul>
                       {{-- <form class="form-inline my-2 my-md-0">

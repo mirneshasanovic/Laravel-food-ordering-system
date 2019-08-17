@@ -49498,10 +49498,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-window.showForm = function showForm() {
+function showForm() {
   var offerForm = document.getElementsByClassName('form-class-todays-offer');
   offerForm[0].style.visibility = 'visible';
-};
+}
 
 /***/ }),
 

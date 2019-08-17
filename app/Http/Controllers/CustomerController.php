@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use  App\Customer;
+use  App\Food;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -13,7 +14,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Customer::all();
+        return view('orders')->with('orders', $orders);
     }
 
     /**
@@ -42,7 +44,9 @@ class CustomerController extends Controller
         $customer->phone = $request->input('phone');
         $customer->address = $request->input('address');
         $customer->save();
-        return redirect('add_food');
+        $old_value = Food::where('food', $request->input('food'))->first()->quantity;
+        Food::updateOrCreate(['food' => $request->input('food')] , ['quantity' =>$old_value - $request->input('quantity')] );
+        return redirect('todays_offer');
     }
 
     /**

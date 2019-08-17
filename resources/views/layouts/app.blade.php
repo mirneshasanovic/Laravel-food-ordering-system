@@ -29,14 +29,22 @@
                     <div class="collapse navbar-collapse" id="navbarsExample02">
                       <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                          <a class="nav-link" href="{{ route('login') }}">Order food</a>
+                          <a class="nav-link" href="todays_offer">Ordering food site</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('add_food') }}">Add food into database</a>
-                        </li>
+                        @if (Auth::check())
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('add_food') }}">Add food into database</a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link" href="todays_offer">Todays offer</a>
                         </li>
+                        @if (Auth::check())
+                            <li class="nav-item">
+                                <a class="nav-link" href="orders">All orders</a>
+                            </li>
+                        @endif
+
 
                       </ul>
                       {{-- <form class="form-inline my-2 my-md-0">

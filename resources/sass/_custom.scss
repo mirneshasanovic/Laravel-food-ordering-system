@@ -1,11 +1,17 @@
 .form-class-todays-offer{
     visibility: hidden;
 }
-// .btn.btn-primary{
-//     position: absolute;
-//     right: 21%;
-//     top: 9%;
+// #delivered{
+//     height: 3%;
 // }
 // .lists{
 //     display: flex;
 // }
+.food-list{
+    display: inline-flex;
+}
+.quantity{
+    color: green;
+    right: -10%;
+    position: relative;
+}

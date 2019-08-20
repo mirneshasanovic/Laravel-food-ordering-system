@@ -1,14 +1,19 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
-        <div class="food-list">
-                @foreach ($food as $food)
-                        {{$food->food}}   <h1>{{$food->quantity}}</h1> 
-                        <br/>
-                @endforeach
-                <div class="btn btn-primary" onclick="showForm()">Order a food</div>
-                <br><br>
-        </div>
+    <div class="container">        
+        @foreach ($food as $food)
+            <div class="food-list">
+                <div class="food">
+                    <h2>{{$food->food}}</h2>
+                </div>
+                <div class="quantity">  
+                    <h1>{{$food->quantity}}</h1>
+                </div>              
+            </div>
+            <br/>    
+        @endforeach
+            <div class="btn btn-primary" onclick="showForm()">Order a food</div>
+            <br><br>
         <div class="form-class-todays-offer">
             {!! Form::open(['action'=>'CustomerController@store','method' => 'POST', 'enctype' => 'multipart/form-data', 'autocomplete' => "off"]) !!}
                 {{ csrf_field() }}

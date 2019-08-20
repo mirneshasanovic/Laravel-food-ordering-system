@@ -29,7 +29,7 @@
                     <div class="collapse navbar-collapse" id="navbarsExample02">
                       <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                          <a class="nav-link" href="todays_offer">Ordering food site</a>
+                          <a class="nav-link" href="#">Ordering food site</a>
                         </li>
                         @if (Auth::check())
                             <li class="nav-item">

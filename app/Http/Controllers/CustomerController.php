@@ -1,24 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
+use  App\Customer;
 use  App\Food;
 use Illuminate\Http\Request;
 
-class FoodController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function todays_offer()
-    {
-        $food=Food::all();
-        return view('todays_offer')->with('food', $food);
-    }
     public function index()
     {
-        return view('food_procurement');
+        $orders = Customer::all();
+        return view('orders')->with('orders', $orders);
     }
 
     /**
@@ -39,10 +36,17 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        $food=new Food;  
-            $old_value = Food::where('food', $request->input('food'))->first()->quantity;
-            Food::updateOrCreate(['food' => $request->input('food')] , ['quantity' =>$old_value+$request->input('quantity')] );
-        return redirect('add_food');
+        $customer=new Customer;
+        $customer->food = $request->input('food');
+        $customer->quantity = $request->input('quantity');
+        $customer->name = $request->input('name');
+        $customer->lastname = $request->input('lastname');
+        $customer->phone = $request->input('phone');
+        $customer->address = $request->input('address');
+        $customer->save();
+        $old_value = Food::where('food', $request->input('food'))->first()->quantity;
+        Food::updateOrCreate(['food' => $request->input('food')] , ['quantity' =>$old_value - $request->input('quantity')] );
+        return redirect('todays_offer');
     }
 
     /**

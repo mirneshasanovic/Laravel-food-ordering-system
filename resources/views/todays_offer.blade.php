@@ -4,10 +4,10 @@
         @foreach ($food as $food)
             <div class="food-list">
                 <div class="food">
-                    <h2>{{$food->food}}</h2>
+                    <h2 >{{$food->food}}</h2>
                 </div>
                 <div class="quantity">  
-                    <h1>{{$food->quantity}}</h1>
+                    <h1 id={{$food->food}}>{{$food->quantity}}</h1>
                 </div>              
             </div>
             <br/>    
